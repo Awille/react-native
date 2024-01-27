@@ -145,3 +145,22 @@ React Native documentation is Creative Commons licensed, as found in the [LICENS
 
 [l]: https://github.com/facebook/react-native/blob/master/LICENSE
 [ld]: https://github.com/facebook/react-native/blob/master/LICENSE-docs
+
+# 本地编译ReactNative
+
+1、进入到根目录下
+yarn install 会自动下载package.json中的所有依赖
+
+踩坑命令：
+yarn add react-native@0.63.0
+npm info react-native@0.63.0 peerDependencies   查看react-native 依赖的react版本
+yarn add react@依赖的版本号
+npm install --legacy-peer-deps
+npm install --force
+
+2、gradle同步代码
+
+3、使用19.2.5345600 ndk版本，试了高版本的ndk好像会有各种各样的问题
+
+3、./gradlew :ReactAndroid:assembleDebug
+0.63.0版本 由于hermes头文件未引入，我在本地解决了，参照当前commit

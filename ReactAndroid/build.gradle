@@ -100,18 +100,30 @@ task prepareHermes() {
     if (!hermesPackagePath) {
         throw new GradleScriptException("Could not find the hermes-engine npm package")
     }
+    println("hermesPackagePath=$hermesPackagePath")
 
     def hermesAAR = file("$hermesPackagePath/android/hermes-debug.aar")
     if (!hermesAAR.exists()) {
         throw new GradleScriptException("The hermes-engine npm package is missing \"android/hermes-debug.aar\"")
     }
+    println("hermesAAR=$hermesAAR")
 
     def soFiles = zipTree(hermesAAR).matching({ it.include "**/*.so" })
+
+    println("soFiles=$soFiles")
+
+    def includeFiles = file("$hermesPackagePath/android/include/hermes")
+    println("includeFiles=$includeFiles")
+    println("thirdPartyNdkDir=$includeFiles")
 
     copy {
         from soFiles
         from "src/main/jni/first-party/hermes/Android.mk"
         into "$thirdPartyNdkDir/hermes"
+    }
+    copy {
+        from includeFiles
+        into "$thirdPartyNdkDir/hermes/hermes"
     }
 }
 
