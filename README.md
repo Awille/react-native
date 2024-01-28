@@ -193,5 +193,7 @@ nvm ls
 安装后再打开APP，选定本地debug ip 端口，app可正常运行。
 
 
+# JS bundle打包
+yarn react-native bundle --platform android --dev true --entry-file RNTester/js/RNTesterApp.android.js --bundle-output RNTester/android/app/src/main/assets/RNTesterApp.android.bundle --assets-dest RNTester/android/app/src/main/res/
 
-
+以上命令打包完成后，会在--bundle-output指定的路径下生成一个js bundle文件，后面正常进行打包安装就可以看到本地bundle了
