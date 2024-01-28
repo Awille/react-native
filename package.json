@@ -152,6 +152,9 @@
     "ws": "^6.1.4",
     "yargs": "^14.2.0"
   },
+  "resolutions": {
+    "graceful-fs": "4.2.4"
+  },
   "detox": {
     "test-runner": "jest",
     "runner-config": "RNTester/e2e/config.json",

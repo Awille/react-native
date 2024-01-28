@@ -164,3 +164,34 @@ npm install --force
 
 3、./gradlew :ReactAndroid:assembleDebug
 0.63.0版本 由于hermes头文件未引入，我在本地解决了，参照当前commit
+
+
+# JS代码运行
+Js代码运行中遇到一些js代码的执行错误，当前用的node js版本是v20 版本，看看是不是高版本的问题
+当前下载了nvm工具，node js 版本管理工具
+nvm -list查看当前已安装版本
+C:\Users\A>nvm list
+* 20.10.0 (Currently using 64-bit executable)
+
+
+下面切换到v16.15.0版本试试
+nvm install 16.15.0
+
+安装后
+nvm use 16.15.0
+
+check是否切换成功
+nvm ls
+
+
+安装成功后，删除node_module模块
+重新执行yarn install 去安装package.json文件中的依赖
+
+为了保险起见，我还重新编译整个ReactAndroid模块，
+因为编译的hermes部分代码时从node_module部分复制过来的
+
+安装后再打开APP，选定本地debug ip 端口，app可正常运行。
+
+
+
+
